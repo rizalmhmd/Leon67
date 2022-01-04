@@ -65,14 +65,14 @@ pkg install libwebp
 pkg install imagemagick
 pkg install bash
 git clone https://github.com/Bl4ck-lion/Leon67
-cd Base-ZeroYT7
+cd Leon67
 npm install
 npm start
 ```
 ## For Windows
 ```bash
 git clone https://github.com/Bl4ck-lion/Leon67
-cd Base-ZeroYT7
+cd Leon67
 npm install
 npm start
 ```
@@ -85,7 +85,7 @@ apt apt install libwebp
 apt apt install imagemagick
 apt install bash
 git clone https://github.com/Bl4ck-lion/Leon67
-cd Base-ZeroYT7
+cd Leon67
 npm install
 npm start
 ```
