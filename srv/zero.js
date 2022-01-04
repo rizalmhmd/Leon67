@@ -1598,7 +1598,7 @@ break
 ///ANIME
 case 'ppcp':
 case 'ppcouple':
-anu = await fetchJson(`https://api.lolhuman.xyz/api/random/ppcouple?apikey=8e66d0934cf741bfd2182c16`)
+anu = await fetchJson(`https://api.lolhuman.xyz/api/random/ppcouple?apikey=GhosBid2007`)
 						buff1 = await getBuffer(anu.result.male)
 						buttons = [{buttonId: `ppcp`,buttonText:{displayText: ` ◉ NEXT`},type:1}]
               imageMsg = (await zero.prepareMessageMedia(buff1, "imageMessage", { thumbnail: buff1, })).imageMessage
@@ -1638,7 +1638,7 @@ case 'waifu':
        case 'sagiri':
        case 'megumin':
        case 'wallnime':
-              buff = await getBuffer(`https://api.lolhuman.xyz/api/random/${command}?apikey=8e66d0934cf741bfd2182c16`)
+              buff = await getBuffer(`https://api.lolhuman.xyz/api/random/${command}?apikey=GhosBid2007`)
               buttons = [{buttonId: `${command}`,buttonText:{displayText: `⬡ NEXT`},type:1}]
               imageMsg = (await zero.prepareMessageMedia(buff, "imageMessage", { thumbnail: buff, })).imageMessage
               buttonsMessage = {footerText:'妹Yui-Chan@^3.0.0', imageMessage: imageMsg,
@@ -1650,13 +1650,13 @@ case 'waifu':
        case 'nakanoitsuki':
        case 'nakanomiku':
        case 'nakano':
-              res = await axios.get(`https://api.lolhuman.xyz/api/pinterest?apikey=8e66d0934cf741bfd2182c16&query=${command}`)
+              res = await axios.get(`https://api.lolhuman.xyz/api/pinterest?apikey=GhosBid2007&query=${command}`)
               var string = JSON.parse(JSON.stringify(res.data))
               var random =  string[Math.floor(Math.random() * string.length)]
               sendFileFromUrl(random, image, {quoted: ftrol, thumbnail: Buffer.alloc(0), caption: `*Wangy²*`})
               break
               case 'storyanime':
-              anu = await fetchJson(`https://api.lolhuman.xyz/api/storynime?apikey=8e66d0934cf741bfd2182c16`)
+              anu = await fetchJson(`https://api.lolhuman.xyz/api/storynime?apikey=GhosBid2007`)
               buffer = await getBuffer(anu.result)
               zero.sendMessage(from, buffer, video, { quoted: ftrol })
               break
@@ -1675,14 +1675,14 @@ case 'waifu':
     case 'sakura':
     case 'tsunade':
     case 'gojosatoru':
-        anu = await fetchJson(`https://api.lolhuman.xyz/api/pinterest?apikey=8e66d0934cf741bfd2182c16&query=${command}`, {method: 'get'})
+        anu = await fetchJson(`https://api.lolhuman.xyz/api/pinterest?apikey=GhosBid2007&query=${command}`, {method: 'get'})
         ngebuff = await getBuffer(anu.image)
         zero.sendMessage(from, ngebuff, image, { quoted: ftrol })
         break
         case 'kusonime':
              if (args.length == 0) return reply(`Example: ${prefix + command} Gotoubun No Hanayome`)
              query = args.join(" ")
-             get_result = await fetchJson(`https://api.lolhuman.xyz/api/kusonimesearch?apikey=8e66d0934cf741bfd2182c16&query=${query}`)
+             get_result = await fetchJson(`https://api.lolhuman.xyz/api/kusonimesearch?apikey=GhosBid2007&query=${query}`)
              get_result = get_result.result
              ini_txt = `Title : ${get_result.title}\n`
              ini_txt += `Japanese : ${get_result.japanese}\n`
@@ -1726,7 +1726,7 @@ reply(mess.error.stick)
 .on('end', function () {
 console.log('Finish')
 buffer = fs.readFileSync(ran)
-costum(buffer, sticker, Verived, `𝐉𝐚𝐧𝐠𝐚𝐧 𝐋𝐮𝐩𝐚 𝐒𝐮𝐛𝐬𝐜𝐫𝐢𝐛𝐞 𝐙𝐞𝐫𝐨 𝐘𝐓𝟕`)
+costum(buffer, sticker, Verived, `Jangan Lupa Subscribe LeonGanz`)
 fs.unlinkSync(media)
 fs.unlinkSync(ran)
 })
@@ -1789,14 +1789,14 @@ zero.sendMessage(from, buffer, sticker, { quoted: ftrol })
 break
 case 'toimg':
               if (!isQuotedSticker) return reply('reply stickernya')
-              encmedia = JSON.parse(JSON.stringify(zer).replace('quotedM','m')).message.extendedTextMessage.contextInfo
-              media = await zero.downloadAndSaveMediaMessage(encmedia)
+              const encmedia = JSON.parse(JSON.stringify(zer).replace('quotedM','m')).message.extendedTextMessage.contextInfo
+              const media = await zero.downloadAndSaveMediaMessage(encmedia)
               ran = getRandom('.png')
               exec(`ffmpeg -i ${media} ${ran}`, (err) => {
               fs.unlinkSync(media)
               if (err) return reply('Gagal, pada saat mengkonversi sticker ke gambar')
               buffer = fs.readFileSync(ran)
-              zero.sendMessage(from, buffer, image, {quoted: mek, caption: 'Nih'})
+              zero.sendMessage(from, buffer, image, {quoted: zer, caption: 'Nih'})
               fs.unlinkSync(ran)
 })
               break
@@ -1805,7 +1805,7 @@ let inilist = []
 for (let i of ownerNumber) {
 let vname = zero.contacts[i] != undefined ? zero.contacts[i].vname || zero.contacts[i].notify : undefined
 inilist.push({
-"displayName": 'ZeroYT7',
+"displayName": 'LEON',
 "vcard": 'BEGIN:VCARD\n'
 + 'VERSION:3.0\n'
 + `FN:${NameOwner}\n`
@@ -2130,7 +2130,7 @@ anu = fs.readFileSync(`${q}`)
 reply(String(anu))
 break
 case 'infogempa':
-              anu = await fetchJson(`https://api.lolhuman.xyz/api/infogempa?apikey=8e66d0934cf741bfd2182c16`)
+              anu = await fetchJson(`https://api.lolhuman.xyz/api/infogempa?apikey=GhosBid2007`)
 					gempa = `❏ *INFO GEMPA*\n\n❏ Waktu : ${anu.result.waktu}\n❏ Koordinat : ${anu.result.koordinat}\n❏ Magnitudo : ${anu.result.magnitudo}\n❏ Kedalaman : ${anu.result.kedalaman}\n❏ Lokasi : ${anu.result.lokasi}`
 					reply(mess.wait)
 					buff = await getBuffer(anu.result.Map)
@@ -2291,7 +2291,7 @@ _Tunggu Proses Upload Media_`
             case 'ytmp4':
 if (args.length == 0) return reply(`Link Nya Mana ?\nContoh: ${prefix + command} https://www.youtube.com/watch?v=qZIQAk-BUEc`)
 ini_link = args[0]
-get_result = await fetchJson(`https://api.lolhuman.xyz/api/ytvideo2?apikey=${apikey1}&url=${ini_link}`)
+get_result = await fetchJson(`https://api.lolhuman.xyz/api/ytvideo2?apikey=GhosBid2007&url=${ini_link}`)
 get_result = get_result.result
 ini_txt = `${get_result.title} - ${get_result.size}`
 ini_buffer = await getBuffer(get_result.thumbnail)
@@ -2409,7 +2409,7 @@ if(!q) return reply('Linknya?')
             case 'igdl':
                     if (args.length == 0) return reply(`Example: ${prefix + command} https://www.instagram.com/p/CJ8XKFmJ4al/?igshid=1acpcqo44kgkn`)
                     ini_Url = args[0]
-                    ini_Url = await fetchJson(`https://api.lolhuman.xyz/api/instagram?apikey=8e66d0934cf741bfd2182c16&url=${ini_url}`)
+                    ini_Url = await fetchJson(`https://api.lolhuman.xyz/api/instagram?apikey=GhosBid2007&url=${ini_url}`)
                     ini_Url = ini_Url.result
                     ini_type = image
                     if (ini_Url.includes(".mp4")) ini_type = video
@@ -2419,7 +2419,7 @@ if(!q) return reply('Linknya?')
                 case 'igdl2':
                     if (args.length == 0) return reply(`Example: ${prefix + command} https://www.instagram.com/p/CJ8XKFmJ4al/?igshid=1acpcqo44kgkn`)
                     ini_url = args[0]
-                    ini_url = await fetchJson(`https://api.lolhuman.xyz/api/instagram2?apikey=8e66d0934cf741bfd2182c16&url=${ini_url}`)
+                    ini_url = await fetchJson(`https://api.lolhuman.xyz/api/instagram2?apikey=GhosBid2007&url=${ini_url}`)
                     ini_result = ini_url.result.media
                     for (var x of ini_result) {
                         ini_type = image
@@ -2431,7 +2431,7 @@ if(!q) return reply('Linknya?')
                     case 'tiktokdl':
               if (!q) return reply('Linknya?')
               if (!q.includes('tiktok')) return reply(mess.error.Iv)
-              data = await fetchJson(`https://api.lolhuman.xyz/api/tiktok?apikey=8e66d0934cf741bfd2182c16&url=${q}`)
+              data = await fetchJson(`https://api.lolhuman.xyz/api/tiktok?apikey=GhosBid2007&url=${q}`)
               result = `*Nickname*: ${data.result.author.nickname}\n *Like*: ${data.result.statistic.diggCount}\n*Komentar*: ${data.result.statistic.commentCount}\n*Share*: ${data.result.statistic.shareCount}\n*Views*: ${data.result.statistic.playCount}\n*Desc*: ${data.result.title}`
               buttons = [{buttonId: `buttons3 ${q}`,buttonText:{displayText: `Video`},type:1},{buttonId:`buttons4 ${q}`,buttonText:{displayText:'Audio'},type:1}]
               fs.writeFileSync(`./${sender}.jpeg`, await getBuffer(data.result.thumbnail))
@@ -2443,7 +2443,7 @@ if(!q) return reply('Linknya?')
               fs.unlinkSync(`./${sender}.jpeg`)
               break
           case 'buttons1':
-              await axios.get(`https://api.zeks.xyz/api/ytplaymp3/2?apikey=Nyarlathotep&q=${q}`)
+              await axios.get(`https://api.zeks.xyz/api/ytplaymp3/2?apikey=LeonGanteng&q=${q}`)
 		     .then(res => {
 			  zero.sendMessage(from, { url: res.data.result.link }, 'audioMessage', { mimetype: 'audio/mp4', quoted: ftrol, contextInfo: { externalAdReply: { title: res.data.result.title, mediaType: 2, thumbnailUrl: res.data.result.thumb, mediaUrl: res.data.result.source }}})
 })
@@ -2458,14 +2458,14 @@ if(!q) return reply('Linknya?')
           case 'buttons3': 
               if (!q) return reply('Linknya?')
               if (!q.includes('tiktok')) return reply(mess.error.Iv)
-              data = await fetchJson(`https://api.lolhuman.xyz/api/tiktok?apikey=8e66d0934cf741bfd2182c16&url=${q}`)
+              data = await fetchJson(`https://api.lolhuman.xyz/api/tiktok?apikey=GhosBid2007&url=${q}`)
               ini_video = await getBuffer(data.result.link)
               zero.sendMessage(from, ini_video, video, { quoted: ftrol })
               break
           case 'buttons4': 
               if (!q) return reply('Linknya?')
               if (!q.includes('tiktok')) return reply(mess.error.Iv)
-              data = await getBuffer(`https://api.lolhuman.xyz/api/tiktokmusic?apikey=8e66d0934cf741bfd2182c16&url=${args[0]}`)
+              data = await getBuffer(`https://api.lolhuman.xyz/api/tiktokmusic?apikey=GhosBid2007&url=${args[0]}`)
               zero.sendMessage(from, data, audio, { quoted: ftrol })
               break
           case 'buttons5':
@@ -2514,9 +2514,13 @@ case 'resepmasakan':
 					break 
 					case 'artimimpi':
 if (args.length < 1) return reply('Teksnya?')
-anu = await fetchJson(`https://api.zeks.me/api/artimimpi?apikey=328HYjt1oJpXKNIliMaze3Y6coq&q=${body.slice(11)}`, {method: 'get'})
+anu = await fetchJson(`https://api.zeks.me/api/artimimpi?apikey=LeonGanteng&q=${body.slice(11)}`, {method: 'get'})
 teks = anu.result
 reply(teks)
+break
+case 'simi':
+ simi = await fetchJson(`https://api.simsimi.net/v2/?text=${args.join(" ")}&lc=id&cf=false`)
+ reply(simi.success)
 break
 case 'bilangangka':
               if (args.length < 1) return reply('Angkanya?')
@@ -2539,8 +2543,8 @@ break
 case 'githubstalk':
               if (args.length < 1) return reply('Usernamenya?')
 					var teks = body.slice(13)
-					anu = await fetchJson(`https://bx-hunter.herokuapp.com/api/stalk/github?user=${teks}&apikey=${apikey7}`, {method: 'get'})
-					gstalk = `❏ *GITHUB STALK*\n\n❏ Name : ${anu.result.name}\n❏ Followers : ${anu.result.followers}\n❏ Following : ${anu.result.following}\n❏ Id : ${anu.result.id}\n❏ Node Id : ${anu.result.node_id}\n❏ Type : ${anu.result.type}\n❏ Company : ${anu.result.company}\n❏ Location : ${anu.result.location}\n❏ Bio : ${anu.result.bio}\n❏ Site Admin : ${anu.result.site_admin}\n❏ Email : ${anu.result.email}\n❏ Created At : ${anu.result.created_at}\n❏ Updated At : ${anu.result.updated_at}\n❏ Twitter Username : ${anu.result.twitter_username}\n❏ Blog : ${anu.result.blog}\n❏ Avatar Url : ${anu.result.avatar_url}\n❏ Gravatar Id : ${anu.result.gravatar_id}\n❏ Html Url : ${anu.result.html_url}`
+					anu = await fetchJson(`https://api-alphabot.herokuapp.com/api/stalking/github?username=${text}&apikey=Alphabot`, {method: 'get'})
+					gstalk = `❏ *GITHUB STALK*\n\n❏ Name : ${anu.result.author}\n❏ Followers : ${anu.result.followers}\n❏ Following : ${anu.result.following}\n❏ Id : ${anu.result.id}\n❏ Type : ${anu.result.type}\n❏ Company : ${anu.result.company}\n❏ Location : ${anu.result.location}\n❏ Bio : ${anu.result.bio}\n❏ Email : ${anu.result.email}\n❏ Avatar Url : ${anu.result.avatar}`
 					reply(mess.wait)
 					buff = await getBuffer(anu.result.avatar_url)
 					zero.sendMessage(from, buff, image, {quoted: ftrol, caption: gstalk})
@@ -3042,8 +3046,6 @@ case 'hacked':
 					case 'take':
               if (!isQuotedSticker) return reply(`Reply sticker dengan caption *${prefix}takestick nama|author*`)
 						ppp = `${args.join(' ')}`
-						const encmedia = JSON.parse(JSON.stringify(zer).replace('quotedM','m')).message.extendedTextMessage.contextInfo
-						const media = await zero.downloadAndSaveMediaMessage(encmedia, `./sticker/${sender}`)
 						const packname = ppp.split('|')[0]
 						const author = ppp.split('|')[1]
 						exif.create(packname, author, `takestick_${sender}`)
@@ -3388,7 +3390,7 @@ case 'tag':
                     reply( text1 + readmore + text2)
                     break
                  case 'pantun':
-              anu = await fetchJson(`https://api.lolhuman.xyz/api/random/pantun?apikey=8e66d0934cf741bfd2182c16`, {method: 'get'})
+              anu = await fetchJson(`https://api.lolhuman.xyz/api/random/pantun?apikey=GhosBid2007`, {method: 'get'})
 				kata = anu.result
 				reply(kata)
 				break
@@ -3487,7 +3489,7 @@ case 'valorantbanner':
 if (args.length == 0) return reply(`Teks Nya Mana ?\nContoh : ${prefix + command} LeonGanz`)
 bo = args.join(" ")
 reply(mess.wait)
-anu = await getBuffer(`https://api.lolhuman.xyz/api/ephoto1/${command}?apikey=${apikey1}&text=${bo}`)
+anu = await getBuffer(`https://api.lolhuman.xyz/api/ephoto1/${command}?apikey=GhosBid2007&text=${bo}`)
 zero.sendMessage(from, anu, image, {quoted: ftrol, caption: 'Done Jangan Lupa Subscribe LeonGanz' })
 break
 case 'hartatahta':
@@ -3577,14 +3579,14 @@ case 'wonderfulgraffiti':
 if (args.length == 0) return reply(`Teks Nya Mana ?\nContoh : ${prefix + command} LeonGanz`)
 bo = args.join(" ")
 reply(mess.wait)
-blck = await getBuffer(`https://api.lolhuman.xyz/api/textprome/${command}?apikey=${apikey1}&text=${bo}`)
+blck = await getBuffer(`https://api.lolhuman.xyz/api/textprome/${command}?apikey=GhosBid2007&text=${bo}`)
 zero.sendMessage(from, blck, image, {quoted: ftrol, caption: 'Done Jangan Lupa Subscribe LeonGanz' })
 break
 case 'ssweb':
 if (args.length == 0) return reply(`Teks Nya Mana ?\nContoh: ${prefix + command} Lexxy Gantenk`)
 ini_url = args.join(" ")
 reply(mess.wait)
-getBuffer(`https://api.lolhuman.xyz/api/ssweb?apikey=e54205a4ca2caa368cc067bb&url=${ini_url}`).then((hasil) => {
+getBuffer(`https://api.lolhuman.xyz/api/ssweb?apikey=GhosBid2007&url=${ini_url}`).then((hasil) => {
 zero.sendMessage(from, hasil, image, { thumbnail: Buffer.alloc(0), caption: `Done Jangan Lupa Subscribe LeonGanz`, quoted : ftrol})
 })
 break
@@ -3657,6 +3659,9 @@ break
 //━━━━━━━━━━━━━━━[ AKHIR FITUR ]━━━━━━━━━━━━━━━━━//
         
 default:
+if (budy.includes(`Assalamualaikum`)) {
+                  reply(`Waalaikumsalam`)
+}
 if (budy.startsWith('>')) {
 console.log(color('[EVAL1]'), color(moment(zer.messageTimestamp * 1000).format('DD/MM/YY HH:mm:ss'), 'yellow'), color(`eval return`))
 try {
@@ -3666,6 +3671,7 @@ reply(`${evaled}`)
 } catch (err) {
 reply(`${err}`)
 }
+
 } else if (budy.startsWith('x')) {
 console.log(color('[EVAL2]'), color(moment(zer.messageTimestamp * 1000).format('DD/MM/YY HH:mm:ss'), 'yellow'), color(`eval identy`))
 try {

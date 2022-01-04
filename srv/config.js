@@ -1,8 +1,8 @@
 {
-"Lolkey": "PinnBotWibu",
+"Lolkey": "GhosBid2007",
 "Vhtear": "YOUR APIKEY",
 "Xteam": "AbilGanss",
-"Zeks": "pinnxbotwibu",
+"Zeks": "LeonGanteng",
 "Nurutomo": "YOUR APIKEY",
 "Zero": "ZeroYT7",
 "Hunter": "ikyy69"
