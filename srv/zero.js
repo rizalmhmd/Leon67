@@ -2406,8 +2406,8 @@ if(!q) return reply('Linknya?')
             reply(mess.wait)
                     if (args.length == 0) return reply(`Example: ${prefix + command} https://www.instagram.com/p/CJ8XKFmJ4al/?igshid=1acpcqo44kgkn`)
                     ini_url = args[0]
-                    ini_Url = await fetchJson(`https://api.lolhuman.xyz/api/instagram?apikey=GhosBid2007&url=${ini_url}`)
-                    ini_Url = ini_Url.result
+                    ini_url = await fetchJson(`https://api.lolhuman.xyz/api/instagram?apikey=GhosBid2007&url=${ini_url}`)
+                    ini_url = ini_url.result
                     ini_type = image
                     if (ini_Url.includes(".mp4")) ini_type = video
                     ini_buffer = await getBuffer(ini_url)
