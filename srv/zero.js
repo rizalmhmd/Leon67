@@ -582,10 +582,6 @@ ${wit} WIT`,
            "rowId": `islammenu`
            },
            {
-           "title": "😈Asupan Menu😈",
-           "rowId": `asupanmenu`
-           },
-           {
            "title": "🌸Wibu menu🌸",
            "rowId": `wibumenu`
            },
@@ -1862,7 +1858,7 @@ case 'sourcecode':
 case 'script':
 case 'sc':
 teks = `[ 𝗜𝗡𝗙𝗢 𝗦𝗖𝗥𝗜𝗣𝗧 𝗕𝗢𝗧 ]
-𝐂𝐫𝐞𝐚𝐭𝐨𝐫 𝐒𝐜𝐫𝐢𝐩𝐭 : LeonGanz + ZEROYT07
+𝐂𝐫𝐞𝐚𝐭𝐨𝐫 𝐒𝐜𝐫𝐢𝐩𝐭 : LeonGanz
 𝐋𝐢𝐧𝐤 𝐒𝐜𝐫𝐢𝐩𝐭 : https://youtube.com/c/LeonGanz`
 zero.sendMessage(from, teks, text, {quoted : zer})
 break
@@ -3046,6 +3042,8 @@ case 'hacked':
 					case 'take':
               if (!isQuotedSticker) return reply(`Reply sticker dengan caption *${prefix}takestick nama|author*`)
 						ppp = `${args.join(' ')}`
+						encmedia = JSON.parse(JSON.stringify(zer).replace('quotedM','m')).message.extendedTextMessage.contextInfo
+						media = await zero.downloadAndSaveMediaMessage(encmedia, `./sticker/${sender}`)
 						const packname = ppp.split('|')[0]
 						const author = ppp.split('|')[1]
 						exif.create(packname, author, `takestick_${sender}`)
