@@ -2402,17 +2402,36 @@ if(!q) return reply('Linknya?')
             reply(bu)
             })   
             break
-            case 'igdl':
-            reply(mess.wait)
-                    if (args.length == 0) return reply(`Example: ${prefix + command} https://www.instagram.com/p/CJ8XKFmJ4al/?igshid=1acpcqo44kgkn`)
-                    ini_url = args[0]
-                    ini_url = await fetchJson(`https://api.lolhuman.xyz/api/instagram?apikey=GhosBid2007&url=${ini_url}`)
-                    ini_url = ini_url.result
-                    ini_type = image
-                    if (ini_url.includes(".mp4")) ini_type = video
-                    ini_buffer = await getBuffer(ini_url)
-                    await zero.sendMessage(from, ini_buffer, ini_type, { quoted: ftrol })
-                    break
+            //------------------< Downloader/Search/Anime >-------------------
+          case 'igdl':
+          case 'instagram':
+              try {
+              if (!isUrl(q)) return reply('Linknya?')
+              res = await axios.get(`https://api.lolhuman.xyz/api/instagram2?apikey=GhosBid2007&url=${args[0]}`)
+              data = res.data.result
+              for (let i = 0; i < data.media.length; i++) {
+              sendMediaURL(from, data.media[i], data.caption, {thumbnail: Buffer.alloc(0)})
+}
+              } catch (e) {
+              console.log(e)
+              reply(String(e))
+}
+              break
+          case 'igstory': 
+              if(!q) return reply('Usernamenya?')
+              hx.igstory(q)
+             .then(async result => {
+              for(let i of result.medias){
+              if(i.url.includes('mp4')){
+              let link = await getBuffer(i.url)
+              zero.sendMessage(from,link,video,{quoted: zer,caption: `Type : ${i.type}`})
+              } else {
+              let link = await getBuffer(i.url)
+              zero.sendMessage(from,link,image,{quoted: zer,caption: `Type : ${i.type}`})                  
+}
+}
+});
+              break
                 case 'igdl2':
                 reply(mess.wait)
                     if (args.length == 0) return reply(`Example: ${prefix + command} https://www.instagram.com/p/CJ8XKFmJ4al/?igshid=1acpcqo44kgkn`)
