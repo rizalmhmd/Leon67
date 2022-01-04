@@ -1836,7 +1836,7 @@ var options = {
 text: teks1,
 contextInfo: { mentionedJid: [nomor] },
 }
-zero.sendMessage(`6285157740529@s.whatsapp.net`, options, text, { quoted: ftrol })
+zero.sendMessage(`6285608625102@s.whatsapp.net`, options, text, { quoted: ftrol })
 reply('Masalah Telah Di Laporkan Ke Owner BOT, Mohon Tunggu Untuk Proses Perbaikan')
 break
 case 'youtube':
@@ -2403,6 +2403,7 @@ if(!q) return reply('Linknya?')
             })   
             break
             case 'igdl':
+            reply(mess.wait)
                     if (args.length == 0) return reply(`Example: ${prefix + command} https://www.instagram.com/p/CJ8XKFmJ4al/?igshid=1acpcqo44kgkn`)
                     ini_url = args[0]
                     ini_Url = await fetchJson(`https://api.lolhuman.xyz/api/instagram?apikey=GhosBid2007&url=${ini_url}`)
@@ -2413,6 +2414,7 @@ if(!q) return reply('Linknya?')
                     await zero.sendMessage(from, ini_buffer, ini_type, { quoted: ftrol })
                     break
                 case 'igdl2':
+                reply(mess.wait)
                     if (args.length == 0) return reply(`Example: ${prefix + command} https://www.instagram.com/p/CJ8XKFmJ4al/?igshid=1acpcqo44kgkn`)
                     ini_url = args[0]
                     ini_url = await fetchJson(`https://api.lolhuman.xyz/api/instagram2?apikey=GhosBid2007&url=${ini_url}`)
@@ -2421,7 +2423,7 @@ if(!q) return reply('Linknya?')
                         ini_type = image
                         if (x.includes(".mp4")) ini_type = video
                         ini_buffer = await getBuffer(x)
-                        await lolhuman.sendMessage(from, ini_buffer, ini_type, { quoted: lol })
+                        await zero.sendMessage(from, ini_buffer, ini_type, { quoted: zer })
                     }
                     break
                     case 'tiktokdl':
