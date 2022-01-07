@@ -575,7 +575,7 @@ ${wit} WIT`,
            },
 	       {
            "title": "😸Info Bot😸",
-           "rowId": `infobot`
+           "rowId": `infomenu`
            },
            {
            "title": "😇Islam Menu😇",
@@ -2295,10 +2295,17 @@ her = `*Hero Details ${body.slice(12)}*
 reply(her)
 break
 case 'infobot':
-timestamp = speed();
-latensi = speed() - timestamp
-teks =
-`┏━➤ *INFO BOT* 
+case '😸':
+menu =` *${ucapanWaktu}*, *${pushname}* 👋🏻`
+
+               buttons =  [
+    {buttonId: `menu`, buttonText: {displayText: 'Back To Menu'}, type: 1},{buttonId: `owner`, buttonText: {displayText: 'Owner'}, type: 1},
+]
+               locatione = (await zero.prepareMessageFromContent(from, {"locationMessage": { "degreesLatitude": 0, "degreesLongitude": 0}}, {thumbnail:fs.readFileSync('./img/zero.jpg')})).message.locationMessage
+
+               buttonsMessage = {
+               contentText: `${menu}`,
+               footerText:  `┏━➤ *INFO BOT* 
 *┃┃* Creator Bot : LeonGanz
 *┃┃* Nama Owner : ${NameOwner}
 *┃┃* Nama Bot : ${NameBot}
@@ -2313,13 +2320,18 @@ teks =
 *┃◗ Thank To LeonGanz*
 *┃◗ Thank To Putri.Zizah*
 *┃◗ Thanks To All Subscriberku*
-*┗━━━━━━━ •*`
-                  but = [
-{ buttonId: `script`, buttonText: { displayText: '📌 SCRIPT' }, type: 1 },
-{ buttonId: `owner`, buttonText: { displayText: '👥 OWNER' }, type: 1 }
-]
-sendButLocation(from, teks, faketeks, fakeimg, but)
-break
+*┗━━━━━━━ •*
+
+◪ Runtime : ${runtime(process.uptime())} 
+◪  妹Yui-Chan@^3.0.0`, locationMessage: locatione,
+               buttons: buttons,
+               headerType: 6
+}
+
+
+               prep = await zero.prepareMessageFromContent(from,{buttonsMessage},{quoted:{key:{fromMe:false,participant:`0@s.whatsapp.net`, ...(from ? {remoteJid :"6285878313791@g.us" }: {})},message:{"orderMessage":{"orderId":"6285878313791","thumbnail":``,"itemCount":281005,"status":"INQUIRY","surface":"CATALOG","message":` `,"token":"AR6xBKbXZn0Xwmu76Ksyd7rnxI+Rx87HfinVlW4lwXa6JA=="}}}, contextInfo:{ forwardingScore:508, isForwarded:true, mentionedJid:[sender]}})
+              zero.relayWAMessage(prep)
+               break
 case 'googlesearch':
 case 'ggs':
 if (args.length < 1) return reply('Yang mau di cari apaan?')
@@ -2528,23 +2540,23 @@ if(!q) return reply('Linknya?')
             break
              case 'instagram':
 case 'ig': case 'igdl': 
-	if (!q) return reply('Linknya?')
-	reply(mess.wait)
-	if (!isUrl(args[0]) && !args[0].includes('instagram.com')) return reply(mess.errorLink)
-	let urlnya = q
-	hx.igdl(urlnya)
-	.then(async(result) => {
-		for(let i of result.medias){
-			if(i.url.includes('mp4')){
-				let link = await getBuffer(i.url)
-                    zero.sendMessage(from,link,video,{thumbnail: Buffer.alloc(0), quoted: zer,caption: `Instagram •  ${i.type}`})
-                } else {
-                    let link = await getBuffer(i.url)
-                    zero.sendMediaUrl(from,link,image,{thumbnail: Buffer.alloc(0), quoted: zer,caption: `Instagram • ${i.type}`})                  
-                }
-            }
-            });
-             break
+	if (!q) return reply('Linknya?')
+	if (!isUrl(args[0]) && !args[0].includes('instagram.com')) return reply(mess.errorLink)
+	let urlnya = q
+	hx.igdl(urlnya)
+	.then(async(result) => {
+		for(let i of result.medias){
+			if(i.url.includes('mp4')){
+				let link = await getBuffer(i.url)
+                    zero.sendMediaUrl(from,link,video,{thumbnail: Buffer.alloc(0), quoted: zer,caption: `Instagram â€¢  ${i.type}`})
+                } else {                	
+                    let link = await getBuffer(i.url)
+                    zero.sendMessage(from,link,image,{thumbnail: Buffer.alloc(0), quoted: zer,caption: `Instagram â€¢ ${i.type}`})                
+                 }
+           }
+               });
+             break
+             
                 case 'igdl2':
                     if (args.length == 0) return reply(`Example: ${prefix + command} https://www.instagram.com/p/CJ8XKFmJ4al/?igshid=1acpcqo44kgkn`)
                     ini_url = args[0]
