@@ -2436,8 +2436,8 @@ case 'ytmp3':
                     ini_link = args[0]
                     get_result = await fetchJson(`https://api.lolhuman.xyz/api/ytaudio2?apikey=GhosBid2007&url=${ini_link}`)
                     get_result = get_result.result
-                    caption = ©– Title    : *${result.title}*\n`
-                    caption += ©– Size     : *${result.size}*`
+                    caption = `Title    : *${result.title}*\n`
+                    caption += `Size     : *${result.size}*`
                     ini_buffer = await getBuffer(get_result.thumbnail)
                     await zero.sendMediaUrl(from, ini_buffer, image, { quoted: zer, caption: ini_txt })
                     get_audio = await getBuffer(get_result.link)
