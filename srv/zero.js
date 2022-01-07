@@ -2432,17 +2432,40 @@ get_audio = await getBuffer(get_result.link)
 await zero.sendMessage(from, get_audio, video, { mimetype: 'video/mp4', filename: `${get_result.title}.mp4`, quoted: ftrol, caption: 'Nih Jangan Lupa Subscribe LeonGanz'})
 break
 case 'ytmp3':
-                    if (args.length == 0) return reply(`Example: ${prefix + command} https://www.youtube.com/watch?v=qZIQAk-BUEc`)
-                    ini_link = args[0]
-                    get_result = await fetchJson(`https://api.lolhuman.xyz/api/ytaudio2?apikey=GhosBid2007&url=${ini_link}`)
-                    get_result = get_result.result
-                    caption = `Title    : *${result.title}*\n`
-                    caption += `Size     : *${result.size}*`
-                    ini_buffer = await getBuffer(get_result.thumbnail)
-                    await zero.sendMediaUrl(from, ini_buffer, image, { quoted: zer, caption: ini_txt })
-                    get_audio = await getBuffer(get_result.link)
-                    await zero.sendMediaUrl(from, get_audio, audio, { mimetype: 'audio/mp3', filename: `${get_result.title}.mp3`, quoted: zer })
-                    break
+        if (args.length === 0)
+          return reply(`Send orders *${prefix}ytmp3 [linkYt]*`);
+        let isLinks = args[0].match(
+          /(?:https?:\/{2})?(?:w{3}\.)?youtu(?:be)?\.(?:com|be)(?:\/watch\?v=|\/)([^\s&]+)/
+        );
+        if (!isLinks) return reply(mess.error.Iv);
+        try {
+          yta(args[0]).then((res) => {
+            const { dl_link, thumb, title, filesizeF, filesize } = res;
+            axios
+              .get(`https://tinyurl.com/api-create.php?url=${dl_link}`)
+              .then((a) => {
+                if (Number(filesize) >= 30000)
+                  return sendMediaURL(
+                    from,
+                    thumb,
+                    `*Data Successfully Obtained!*\n\n*Title* : ${title}\n*Ext* : MP3\n*Filesize* : ${filesizeF}\n*Link* : ${a.data}\n\n_For durations more than the limit are presented in the link_`
+                  );
+                const captions = `*Data Successfully Obtained!*\n\n
+⭔ Title : ${res.all[0].title}
+⭔ Size : ${filesizeF}
+⭔ ID : ${res.all[0].videoId}
+⭔ Upload : ${res.all[0].ago}
+⭔ Views : ${res.all[0].views}
+⭔ Duration : ${res.all[0].timestamp}
+⭔ URL : ${res.all[0].author.url}`;
+                zero.sendMediaURL(from, thumb, captions);
+                zero.sendMediaURL(from, dl_link).catch(() => reply(mess.error.api));
+              });
+          });
+        } catch (err) {
+          reply(mess.error.api);
+        }
+        break;
  case 'ytmp4':
               if (args.length === 0) return reply(`Kirim perintah *${prefix}ytmp4 [linkYt]*`)
 						let isLinks2 = args[0].match(/(?:https?:\/{2})?(?:w{3}\.)?youtu(?:be)?\.(?:com|be)(?:\/watch\?v=|\/)([^\s&]+)/)
