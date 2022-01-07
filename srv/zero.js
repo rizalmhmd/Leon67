@@ -575,7 +575,7 @@ ${wit} WIT`,
            },
 	       {
            "title": "😸Info Bot😸",
-           "rowId": `infomenu`
+           "rowId": `infobot`
            },
            {
            "title": "😇Islam Menu😇",
