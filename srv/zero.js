@@ -1778,7 +1778,7 @@ case 'waifu':
               case 'storyanime':
               anu = await fetchJson(`https://api.lolhuman.xyz/api/storynime?apikey=GhosBid2007`)
               buffer = await getBuffer(anu.result)
-              zero.sendMessage(from, buffer, video, { quoted: ftrol })
+              zero.sendMediaUrl(from, buffer, video, { quoted: ftrol })
               break
               case 'kurumi':
     case 'deku':
@@ -2432,59 +2432,17 @@ get_audio = await getBuffer(get_result.link)
 await zero.sendMessage(from, get_audio, video, { mimetype: 'video/mp4', filename: `${get_result.title}.mp4`, quoted: ftrol, caption: 'Nih Jangan Lupa Subscribe LeonGanz'})
 break
 case 'ytmp3':
-        if (args.length === 0)
-          return reply(`Send orders *${prefix}ytmp3 [linkYt]*`);
-        let isLinks = args[0].match(
-          /(?:https?:\/{2})?(?:w{3}\.)?youtu(?:be)?\.(?:com|be)(?:\/watch\?v=|\/)([^\s&]+)/
-        );
-        if (!isLinks) return reply(mess.error.Iv);
-        try {
-          yta(args[0]).then((res) => {
-            const { dl_link, thumb, title, filesizeF, filesize } = res;
-            axios
-              .get(`https://tinyurl.com/api-create.php?url=${dl_link}`)
-              .then((a) => {
-                if (Number(filesize) >= 30000)
-                  return sendMediaURL(
-                    from,
-                    thumb,
-                    `*Data Successfully Obtained!*\n\n*Title* : ${title}\n*Ext* : MP3\n*Filesize* : ${filesizeF}\n*Link* : ${a.data}\n\n_For durations more than the limit are presented in the link_`
-                  );
-                const captions = `*Data Successfully Obtained!*\n\n
-⭔ Title : ${res.all[0].title}
-⭔ Size : ${filesizeF}
-⭔ ID : ${res.all[0].videoId}
-⭔ Upload : ${res.all[0].ago}
-⭔ Views : ${res.all[0].views}
-⭔ Duration : ${res.all[0].timestamp}
-⭔ URL : ${res.all[0].author.url}`;
-                zero.sendMediaURL(from, thumb, captions);
-                zero.sendMediaURL(from, dl_link).catch(() => reply(mess.error.api));
-              });
-          });
-        } catch (err) {
-          reply(mess.error.api);
-        }
-        break;
- case 'ytmp4':
-              if (args.length === 0) return reply(`Kirim perintah *${prefix}ytmp4 [linkYt]*`)
-						let isLinks2 = args[0].match(/(?:https?:\/{2})?(?:w{3}\.)?youtu(?:be)?\.(?:com|be)(?:\/watch\?v=|\/)([^\s&]+)/)
-						if (!isLinks2) return reply(mess.error.Iv)
-						try {
-							sticWait(from)
-							ytv(args[0])
-							.then((res) => {
-								const { dl_link, thumb, title, filesizeF, filesize } = res
-								axios.get(`https://tinyurl.com/api-create.php?url=${dl_link}`)
-								.then((a) => {
-								if (Number(filesize) >= 40000) return sendMediaURL(from, thumb, `❏ *YTmp4*\n\n❏ *Title* : ${title}\n❏ *Ext* : MP3\n*Filesize* : ${filesizeF}\n*Link* : ${a.data}\n\n_Maaf durasi melebihi batas maksimal, Silahkan klik link diatas_`)
-								sendFileFromUrl(dl_link, document, {mimetype: 'video/mp4', filename: `${title}.mp4`, quoted: ftrol, contextInfo: { forwardingScore: 508, isForwarded: true, externalAdReply:{title:title,body:"🔖 YTMP4",mediaType:"2",thumbnail:getBuffer(thumb),sourceUrl:`${body.slice(7)}`}}}).catch(() => reply(mess.error.api))
-							})
-							})
-						} catch (err) {
-							reply(mess.error.api)
-						}
-						break
+                    if (args.length == 0) return reply(`Example: ${prefix + command} https://www.youtube.com/watch?v=qZIQAk-BUEc`)
+                    ini_link = args[0]
+                    get_result = await fetchJson(`https://api.lolhuman.xyz/api/ytaudio2?apikey=GhosBid2007&url=${ini_link}`)
+                    get_result = get_result.result
+                    caption = `â– Title    : *${get_result.title}*\n`
+                    caption += `â– Size     : *${get_result.size}*`
+                    ini_buffer = await getBuffer(get_result.thumbnail)
+                    await zero.sendMessage(from, ini_buffer, image, { quoted: ftrol, caption: 'Subs Channel LeonGanz'})
+                    get_audio = await getBuffer(get_result.link)
+                    await zero.sendMessage(from, get_audio, audio, { mimetype: 'audio/mp4', filename: `${get_result.title}.mp3`, quoted: ftrol })
+                    break
 						case 'play':
 if (args.length < 1) return reply('Masukin Judul Lagunya')
 teks = args.join(' ')
@@ -2554,6 +2512,7 @@ if(!q) return reply('Linknya?')
             break
              case 'instagram':
 case 'ig': case 'igdl': 
+reply(mess.wait)
 	if (!q) return reply('Linknya?')
 	if (!isUrl(args[0]) && !args[0].includes('instagram.com')) return reply(mess.errorLink)
 	let urlnya = q
@@ -2562,25 +2521,26 @@ case 'ig': case 'igdl':
 		for(let i of result.medias){
 			if(i.url.includes('mp4')){
 				let link = await getBuffer(i.url)
-                    zero.sendMediaUrl(from,link,video,{thumbnail: Buffer.alloc(0), quoted: zer,caption: `Instagram â€¢  ${i.type}`})
+                    zero.sendMessage(from,link,video,{thumbnail: Buffer.alloc(0), quoted: zer,caption: `Subs LeonGanz  ${i.type}`})
                 } else {                	
                     let link = await getBuffer(i.url)
-                    zero.sendMessage(from,link,image,{thumbnail: Buffer.alloc(0), quoted: zer,caption: `Instagram â€¢ ${i.type}`})                
+                    zero.sendMessage(from,link,image,{thumbnail: Buffer.alloc(0), quoted: zer,caption: `Subs LeonGanz ${i.type}`})                
                  }
            }
                });
              break
              
                 case 'igdl2':
+                reply(mess.wait)
                     if (args.length == 0) return reply(`Example: ${prefix + command} https://www.instagram.com/p/CJ8XKFmJ4al/?igshid=1acpcqo44kgkn`)
                     ini_url = args[0]
-                    ini_url = await fetchJson(`https://api.lolhuman.xyz/api/instagram?apikey=GhosBid2007&url=${ini_url}`)
-                    ini_result = ini_url.data.medias
+                    ini_buffer = await fetchJson(`https://api.lolhuman.xyz/api/instagram?apikey=GhosBid2007&url=${ini_url}`)
+                    ini_result = ini_buffer.result
                     for (var x of ini_result) {
                         ini_type = image
                         if (x.includes(".mp4")) ini_type = video
                         ini_buffer = await getBuffer(x)
-                        await zero.sendMessage(from, ini_buffer, ini_type, { quoted: lol })
+                        await zero.sendMessage(from,link,image,{thumbnail: Buffer.alloc(0), quoted: zer,caption: `Subs LeonGanz`})
                     }
                     break
                     case 'tiktokdl':
@@ -2969,6 +2929,14 @@ case 'hacked':
 				var bot = gh.split("|")[2];
 			    zero.sendMessage(from, `${bot}`, text, {quoted: { key: { fromMe: false, participant: `${parti}@s.whatsapp.net`, ...(from ? { remoteJid: "status@broadcast" } : {}) }, message: { conversation: `${targetq}` }}})
 					break
+					case 'fitnah':
+            if (args.length < 1) return reply(`Usage :\n${prefix}fitnah [@tag|pesan|balasanbot]]\n\nEx : \n${prefix}fitnah @tagmember|hai|hai juga`)
+            var gh = args.join('')
+            var replace = gh.split("|")[0];
+            var target = gh.split("|")[1];
+            var bot = gh.split("|")[2];
+            zero.sendMessage(from, `${bot}`, text, {quoted: { key: { fromMe: false, participant: `${mentioned}`, ...(from ? { remoteJid: from } : {}) }, message: { conversation: `${target}` }}})
+            break
 					case 'kontak':
               if (!isGroup) return reply(mess.only.group)
 					argzu = arg.split('|')
