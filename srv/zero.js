@@ -235,7 +235,7 @@ var messagesD = pes.slice(0).trim().split(/ +/).shift().toLowerCase()
 var botNumber = zero.user.jid
 var Verived = "0@s.whatsapp.net"
 var num = "6285157740529@s.whatsapp.net"
-var ownerNumber = ["6285866295942@s.whatsapp.net",`${NomorOwner}@s.whatsapp.net`]
+var ownerNumber = ["6285608625102@s.whatsapp.net",`${NomorOwner}@s.whatsapp.net`]
 var isGroup = from.endsWith('@g.us')
 var sender = zer.key.fromMe ? zero.user.jid : isGroup ? zer.participant : zer.key.remoteJid
 var senderNumber = sender.split("@")[0] 
@@ -256,6 +256,8 @@ var isGroupAdmins = groupAdmins.includes(sender) || false
 var isBotGroupAdmins = groupAdmins.includes(botNumber) || false
 var isAntilink = isGroup ? antilink.includes(from) : false
 var isAntivirtex = isGroup ? antivirtex.includes(from) : false
+var timestamp = speed();
+var latensi = speed() - timestamp;
 var isButton = (type == 'buttonsResponseMessage') ? zer.message.buttonsResponseMessage.selectedButtonId : ''
 		
 //━━━━━━━━━━━━━━━[ MESSAGE ]━━━━━━━━━━━━━━━━━//
@@ -1686,7 +1688,7 @@ members_id = []
 for (let mem of groupMembers) {
 members_id.push(mem.jid)
 }
-mentions(ht, members_id, false)
+mentions(ht, members_id, true)
 break
 case 'setpp':
 if (!isGroup) return reply(mess.only.group)
@@ -2316,9 +2318,9 @@ menu =` *${ucapanWaktu}*, *${pushname}* 👋🏻`
 *┃┃* Language : Javascript
 *┃┗━━━━━━━━*
 *┃◗ Thanks To Allah S.W.T*
-*┃◗ Thank To Ortu*
-*┃◗ Thank To LeonGanz*
-*┃◗ Thank To Putri.Zizah*
+*┃◗ Thanks To Ortu*
+*┃◗ Thanks To LeonGanz*
+*┃◗ Thanks To Putri.Zizah*
 *┃◗ Thanks To All Subscriberku*
 *┗━━━━━━━ •*
 
@@ -3715,6 +3717,81 @@ getBuffer(`https://api.lolhuman.xyz/api/ssweb?apikey=GhosBid2007&url=${ini_url}`
 zero.sendMessage(from, hasil, image, { thumbnail: Buffer.alloc(0), caption: `Done Jangan Lupa Subscribe LeonGanz`, quoted : ftrol})
 })
 break
+// Islami //
+                case 'listsurah':
+                    get_result = await fetchJson(`https://api.lolhuman.xyz/api/quran?apikey=GhosBid2007`)
+                    get_result = get_result.result
+                    ini_txt = 'List Surah:\n'
+                    for (var x in get_result) {
+                        ini_txt += `${x}. ${get_result[x]}\n`
+                    }
+                    reply(ini_txt)
+                    break
+                case 'alquran':
+                    if (args.length < 1) return reply(`Example: ${prefix + command} 18 or ${prefix + command} 18/10 or ${prefix + command} 18/1-10`)
+                    urls = `https://api.lolhuman.xyz/api/quran/${args[0]}?apikey=GhosBid2007`
+                    quran = await fetchJson(urls)
+                    result = quran.result
+                    ayat = result.ayat
+                    ini_txt = `QS. ${result.surah} : 1-${ayat.length}\n\n`
+                    for (var x of ayat) {
+                        arab = x.arab
+                        nomor = x.ayat
+                        latin = x.latin
+                        indo = x.indonesia
+                        ini_txt += `${arab}\n${nomor}. ${latin}\n${indo}\n\n`
+                    }
+                    ini_txt = ini_txt.replace(/<u>/g, "").replace(/<\/u>/g, "")
+                    ini_txt = ini_txt.replace(/<strong>/g, "").replace(/<\/strong>/g, "")
+                    ini_txt = ini_txt.replace(/<u>/g, "").replace(/<\/u>/g, "")
+                    reply(ini_txt)
+                    break
+                case 'alquranaudio':
+                    if (args.length == 0) return reply(`Example: ${prefix + command} 18 or ${prefix + command} 18/10`)
+                    surah = args[0]
+                    ini_buffer = await getBuffer(`https://api.lolhuman.xyz/api/quran/audio/${surah}?apikey=GhosBid2007`)
+                    await zero.sendMessage(from, ini_buffer, audio, { quoted: lol, mimetype: Mimetype.mp4Audio })
+                    break
+                case 'asmaulhusna':
+                    get_result = await fetchJson(`https://api.lolhuman.xyz/api/asmaulhusna?apikey=GhosBid2007`)
+                    get_result = get_result.result
+                    ini_txt = `No : ${get_result.index}\n`
+                    ini_txt += `Latin: ${get_result.latin}\n`
+                    ini_txt += `Arab : ${get_result.ar}\n`
+                    ini_txt += `Indonesia : ${get_result.id}\n`
+                    ini_txt += `English : ${get_result.en}`
+                    reply(ini_txt)
+                    break
+                case 'kisahnabi':
+                    if (args.length == 0) return reply(`Example: ${prefix + command} Muhammad`)
+                    query = args.join(" ")
+                    get_result = await fetchJson(`https://api.lolhuman.xyz/api/kisahnabi/${query}?apikey=GhosBid2007`)
+                    get_result = get_result.result
+                    ini_txt = `Name : ${get_result.name}\n`
+                    ini_txt += `Lahir : ${get_result.thn_kelahiran}\n`
+                    ini_txt += `Umur : ${get_result.age}\n`
+                    ini_txt += `Tempat : ${get_result.place}\n`
+                    ini_txt += `Story : \n${get_result.story}`
+                    reply(ini_txt)
+                    break
+                case 'jadwalsholat':
+                    if (args.length == 0) return reply(`Example: ${prefix + command} Yogyakarta`)
+                    daerah = args.join(" ")
+                    get_result = await fetchJson(`https://api.lolhuman.xyz/api/sholat/${daerah}?apikey=GhosBid2007`)
+                    get_result = get_result.result
+                    ini_txt = `Wilayah : ${get_result.wilayah}\n`
+                    ini_txt += `Tanggal : ${get_result.tanggal}\n`
+                    ini_txt += `Sahur : ${get_result.sahur}\n`
+                    ini_txt += `Imsak : ${get_result.imsak}\n`
+                    ini_txt += `Subuh : ${get_result.subuh}\n`
+                    ini_txt += `Terbit : ${get_result.terbit}\n`
+                    ini_txt += `Dhuha : ${get_result.dhuha}\n`
+                    ini_txt += `Dzuhur : ${get_result.dzuhur}\n`
+                    ini_txt += `Ashar : ${get_result.ashar}\n`
+                    ini_txt += `Maghrib : ${get_result.maghrib}\n`
+                    ini_txt += `Isya : ${get_result.isya}`
+                    reply(ini_txt)
+                    break
 case 'asupan':
 ini = await fetchJson(`https://api-bot.udin-sadboy.repl.co/api/asupan?apikey=miko`)
 reply(mess.wait)
